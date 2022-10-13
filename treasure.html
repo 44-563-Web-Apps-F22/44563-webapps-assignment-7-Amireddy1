@@ -33,6 +33,25 @@
             lastCheck=position;
         }
 
+        function generateRandomInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function reset() {
+      chestCount = 0;
+      score = 0;
+      lastCheck = 12;
+      treasureLocation = generateRandomInteger(0, 24);
+      document.getElementById('chests').innerHTML="Number of chests checked is "+chestCount;
+      document.getElementById('score').innerHTML="Score is  "+score;
+      document.getElementById('help').innerHTML="Help report";
+      for (let i = 0; i <= ids.length; i++){
+        if(i!=12){
+            document.getElementById(ids[i]).src="treasurechest.jpg";
+        }
+      }
+    }
+
         function help(index) {
             let col= lastCheck%5;
             let row=Math.floor(lastCheck/5);
@@ -82,6 +101,10 @@
 <p style="color:red;" id="chests">Number of chests checked is zero</p>
 <p style="color:blue;" id="score">Score is unknown</p>
 <p style="color: maroon;" id="help">Help report</p>
+
+<div class="text-left">
+    <button type="button" class="btn btn-primary" onclick="reset()">New Game</button>
+  </div>
 
 <div class="container">
   <div class="row">

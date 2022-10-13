@@ -26,8 +26,9 @@
       console.log(dt)
     }
     function startTime(){
-      for(let i=0;i<4;i++){
-        setTimeout(() => {document.getElementById("countdown").innerHTML="Count: " + i },((3-i)*1000))
+      let countdown = generateRandomInteger(2,10)
+      for(let i=0;i<countdown;i++){
+        setTimeout(() => {document.getElementById("countdown").innerHTML="Count: " + i },((countdown-i)*1000))
       }
       setTimeout(() => {
         if(myTime==undefined){
@@ -35,9 +36,13 @@
         }
         else{
           var buttonTime=Date.now()
-          document.getElementById("target").innerHTML="Time was" + (buttonTime - myTime)
+          document.getElementById("target").innerHTML="Time was " + (buttonTime - myTime)
         }
-      },3000)
+      },countdown*1000)
+    }
+
+    function generateRandomInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     </script>
 
