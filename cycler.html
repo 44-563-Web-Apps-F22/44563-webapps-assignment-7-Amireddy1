@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html> <head> <style>
+<html> <head>
+	<title>Cycler page</title> 
+	
+	<style>
     .flex-container {
       display: flex;  flex-direction:row;
       background-color: red;
@@ -17,34 +20,51 @@
 		 background-color: green;
 	  }
 	}
-</style></head>
+</style>
+</head>
 
 
 
 <body>
-		<div class="flex-container" id="target">
-		  <div>row item 1</div>   
-		  <div>row item 2</div>  
-		  <div>row item 3</div>  
-		</div>
-	
-	<p> Press the button to create an new element of type div and then add it to the container.
-		</p>
-		<button onclick="makeNewDiv()">Add one</button>
-	
-	
+	<h1>Shruthi Amireddy builds a cycler</h1>
+	<input type="text" id="txtInpt">
+	<div class="flex-container" id="target">
+	  <div class="cycler">row item 1</div>   
+	  <div class="cycler">row item 2</div>  
+	  <div class="cycler">row item 3</div>  
+	</div>
+<p> Press the button to create an new element of type div and then add it to the container.</p>
+	<br>
+		<button onclick="makeNewDiv()">Add value</button>
+		<button onclick="get()">Get</button>
+		<button onclick="spin()" >Spin</button>
 </body>
 <script>
 	function makeNewDiv(){
-		/* make the div and its text */
 		let element = document.createElement("div")
-		element.innerHTML = "an item after 3"
-		element.style.color = "orange"
+		element.innerHTML = document.getElementById("txtInpt").value;
+		element.className = "cycler"
 
-		/* add it to the container */
+		/* adding to container */
 		let container = document.getElementById('target')
 		container.appendChild(element)
 		
 	}
-</script>
+	function get() {
+var cyclerItems = document.getElementsByClassName("cycler");
+ if(cyclerItems.length>0) {
+	cyclerItems[cyclerItems.length-1].remove()	;
+
+ }
+	}
+	function spin() {
+		var cyclerItems = document.getElementsByClassName("cycler");
+ 	if(cyclerItems.length>1) {
+	var removedItem=cyclerItems[cyclerItems.length-1];
+	cyclerItems[cyclerItems.length-1].remove()	;
+	container = document.getElementById('target')
+	container.insertBefore(removedItem,container.firstChild);
+ }
+	}
+</script>	
 </html>	
