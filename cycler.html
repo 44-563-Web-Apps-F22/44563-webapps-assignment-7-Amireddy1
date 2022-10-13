@@ -23,8 +23,6 @@
 </style>
 </head>
 
-
-
 <body>
 	<h1>Shruthi Amireddy builds a cycler</h1>
 	  <input type="text" id="Input">
@@ -64,6 +62,8 @@
 		cyclerItems[cyclerItems.length-1].remove();
 		container = document.getElementById('target')
 		container.insertBefore(removedItem, container.firstChild);
+		}
+	}
 
 	function Swap() {
 		var cyclervalues = document.getElementsByClassName("cycler");
@@ -78,4 +78,4 @@
  }
 	}
 </script>	
-</html>	
+</html>
