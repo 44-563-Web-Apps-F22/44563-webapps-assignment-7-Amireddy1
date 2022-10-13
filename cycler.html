@@ -27,8 +27,8 @@
 
 <body>
 	<h1>Shruthi Amireddy builds a cycler</h1>
-	<input type="text" id="txtInpt">
-	<div class="flex-container" id="target">
+	  <input type="text" id="Input">
+	  <div class="flex-container" id="target">
 	  <div class="cycler">row item 1</div>   
 	  <div class="cycler">row item 2</div>  
 	  <div class="cycler">row item 3</div>  
@@ -38,32 +38,43 @@
 		<button onclick="makeNewDiv()">Add value</button>
 		<button onclick="get()">Get</button>
 		<button onclick="spin()" >Spin</button>
+		<button onclick="Swap()" >Swap</button>
 </body>
 <script>
 	function makeNewDiv(){
-		let element = document.createElement("div")
-		element.innerHTML = document.getElementById("txtInpt").value;
-		element.className = "cycler"
-
-		/* adding to container */
-		let container = document.getElementById('target')
+		element = document.createElement("div")
+		element.innerHTML = document.getElementById("Input").value;
+		element.innerHTML = inputRead;
+		element.className = "cycler"	
+		container = document.getElementById('target')
 		container.appendChild(element)
 		
 	}
 	function get() {
-var cyclerItems = document.getElementsByClassName("cycler");
- if(cyclerItems.length>0) {
-	cyclerItems[cyclerItems.length-1].remove()	;
+		var cyclerItems = document.getElementsByClassName("cycler");
+		if(cyclerItems.length > 0) {
+		cyclerItems[cyclerItems.length-1].remove();
 
  }
 	}
 	function spin() {
 		var cyclerItems = document.getElementsByClassName("cycler");
- 	if(cyclerItems.length>1) {
-	var removedItem=cyclerItems[cyclerItems.length-1];
-	cyclerItems[cyclerItems.length-1].remove()	;
-	container = document.getElementById('target')
-	container.insertBefore(removedItem,container.firstChild);
+		if(cyclerItems.length > 1) {
+		var removedItem=cyclerItems[cyclerItems.length-1];
+		cyclerItems[cyclerItems.length-1].remove();
+		container = document.getElementById('target')
+		container.insertBefore(removedItem, container.firstChild);
+
+	function Swap() {
+		var cyclervalues = document.getElementsByClassName("cycler");
+			let rand1 = Math.floor(Math.random() * cyclervalues.length)
+            let rand2 = Math.floor(Math.random() * cyclervalues.length)
+            let value1 = document.getElementsByClassName("cycler")[rand1]
+            let value2 = document.getElementsByClassName("cycler")[rand2]
+            if(cyclervalues.length > 1) {
+                elements = value1.innerHTML;
+                value1.innerHTML = value2.innerHTML;
+                value2.innerHTML = elements;
  }
 	}
 </script>	
